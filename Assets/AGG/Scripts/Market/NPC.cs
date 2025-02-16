@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
-public class Seller : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     public CinemachineVirtualCamera VCamDisable;
     public CinemachineVirtualCamera VCamEnable;
-    public GameObject UI;
-    //public GameObject Dialog; 
+    //public GameObject UI;
+    public GameObject Dialog;
     private CharacterController _characterController;
     private bool _canBuy = true;
     private float time = 1f;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_canBuy)
+        if (_canBuy)
         {
             VCamDisable.gameObject.SetActive(false);
             VCamDisable.gameObject.SetActive(true);
@@ -23,9 +23,9 @@ public class Seller : MonoBehaviour
             Camera.main.cullingMask &= ~(1 << 8);
             _characterController = other.GetComponent<CharacterController>();
             _characterController.enabled = false;
-            UI.SetActive(true);
-            //Dialog.SetActive(true);
-            _canBuy = false;  
+            //UI.SetActive(true);
+            Dialog.SetActive(true);
+            _canBuy = false;
         }
     }
 
@@ -47,7 +47,7 @@ public class Seller : MonoBehaviour
         VCamEnable.gameObject.SetActive(false);
         Camera.main.GetComponent<CinemachineBrain>().enabled = false;
         Camera.main.cullingMask |= ~(1 << 8);
-        UI.SetActive(false);
-        //Dialog.SetActive(false);
+        //UI.SetActive(false);
+        Dialog.SetActive(false);
     }
 }

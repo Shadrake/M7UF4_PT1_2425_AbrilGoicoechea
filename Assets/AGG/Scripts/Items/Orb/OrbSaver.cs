@@ -8,7 +8,7 @@ public class OrbSaver : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("Orb" + id) && PlayerPrefs.GetInt("Orb" + id) == 1)
+        if(PlayerPrefs.HasKey("Orb" + id) && PlayerPrefs.GetInt("Orb" + id) == 1)
         {
             LoadOrb();
         }
